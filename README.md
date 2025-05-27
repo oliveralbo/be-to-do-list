@@ -1,3 +1,176 @@
+# TodoList API with NestJS, GraphQL, and PostgreSQL
+
+This is a TodoList API built with NestJS, GraphQL, and PostgreSQL. It provides a complete CRUD API for managing tasks.
+
+## Features
+
+- GraphQL API with Apollo Server
+- PostgreSQL database with TypeORM
+- UUID-based task IDs
+- Complete CRUD operations for tasks
+- Input validation
+- TypeScript support
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- PostgreSQL 14.18
+- npm or yarn
+
+## Database Setup
+
+1. Make sure PostgreSQL is installed and running:
+
+   ```bash
+   sudo systemctl status postgresql
+   ```
+
+2. Create the database and user:
+
+   ```bash
+   sudo -u postgres psql -c "CREATE DATABASE todolist;"
+   sudo -u postgres psql -c "CREATE USER todolist_user WITH PASSWORD 'todolist_password';"
+   sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE todolist TO todolist_user;"
+   ```
+
+3. Create a `.env` file in the root directory with the following content:
+   ```
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USERNAME=todolist_user
+   DB_PASSWORD=todolist_password
+   DB_NAME=todolist
+   ```
+
+## Application Setup
+
+1. Clone the repository
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the application:
+   ```bash
+   npm run start:dev
+   ```
+
+The GraphQL playground will be available at `http://localhost:3000/graphql`
+
+## GraphQL API
+
+### Queries
+
+1. Get all tasks:
+
+   ```graphql
+   query {
+     tasks {
+       id
+       title
+       description
+       completed
+       createdAt
+       updatedAt
+     }
+   }
+   ```
+
+2. Get a single task:
+   ```graphql
+   query {
+     task(id: "task-uuid") {
+       id
+       title
+       description
+       completed
+       createdAt
+       updatedAt
+     }
+   }
+   ```
+
+### Mutations
+
+1. Create a task:
+
+   ```graphql
+   mutation {
+     createTask(
+       createTaskInput: { title: "New Task", description: "Task description" }
+     ) {
+       id
+       title
+       description
+       completed
+       createdAt
+       updatedAt
+     }
+   }
+   ```
+
+2. Update a task:
+
+   ```graphql
+   mutation {
+     updateTask(
+       updateTaskInput: {
+         id: "task-uuid"
+         title: "Updated Title"
+         completed: true
+       }
+     ) {
+       id
+       title
+       description
+       completed
+       updatedAt
+     }
+   }
+   ```
+
+3. Delete a task:
+   ```graphql
+   mutation {
+     removeTask(id: "task-uuid") {
+       id
+       title
+     }
+   }
+   ```
+
+## Task Model
+
+The Task entity has the following fields:
+
+- `id`: UUID (automatically generated)
+- `title`: String (required)
+- `description`: String (optional)
+- `completed`: Boolean (defaults to false)
+- `createdAt`: DateTime (automatically set)
+- `updatedAt`: DateTime (automatically updated)
+
+## Development
+
+- The application uses TypeORM for database operations
+- GraphQL schema is automatically generated
+- Input validation is handled by class-validator
+- UUIDs are used for all task IDs
+- The database schema is automatically synchronized in development
+
+## Production Considerations
+
+For production deployment:
+
+1. Set `synchronize: false` in the TypeORM configuration
+2. Use proper environment variables
+3. Implement proper authentication and authorization
+4. Set up proper logging
+5. Configure CORS appropriately
+
+---
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
