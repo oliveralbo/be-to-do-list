@@ -1,4 +1,16 @@
+<p align="center">
+  <a href="https://nodejs.org/" target="blank"><img src="https://nodejs.org/static/images/logo.svg" width="80" alt="Node.js Logo" /></a>
+  &nbsp;&nbsp;
+  <a href="https://graphql.org/" target="blank"><img src="https://graphql.org/img/logo.svg" width="60" alt="GraphQL Logo" /></a>
+  &nbsp;&nbsp;
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="60" alt="Nest Logo" /></a>
+  &nbsp;&nbsp;
+  <a href="https://www.postgresql.org/" target="blank"><img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="60" alt="PostgreSQL Logo" /></a>
+</p>
+
 # TodoList API with NestJS, GraphQL, and PostgreSQL
+
+#### by Oliverio Petrecca
 
 This is a TodoList API built with NestJS, GraphQL, and PostgreSQL. It provides a complete CRUD API for managing tasks.
 
@@ -172,7 +184,11 @@ For production deployment:
 ---------------------------- default NestJS ----------------------------------
 
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="60" alt="Nest Logo" /></a>
+  &nbsp;&nbsp;
+  <a href="https://graphql.org/" target="blank"><img src="https://graphql.org/img/logo.svg" width="60" alt="GraphQL Logo" /></a>
+  &nbsp;&nbsp;
+  <a href="https://nodejs.org/" target="blank"><img src="https://nodejs.org/static/images/logo.svg" width="80" alt="Node.js Logo" /></a>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
