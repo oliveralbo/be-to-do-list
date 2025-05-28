@@ -1,8 +1,8 @@
 {
   "name": "backend-todolist",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "TicMas Todo List Backend",
+  "author": "Oliverio Petrecca",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

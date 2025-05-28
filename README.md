@@ -169,7 +169,7 @@ For production deployment:
 4. Set up proper logging
 5. Configure CORS appropriately
 
----
+---------------------------- default NestJS ----------------------------------
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
