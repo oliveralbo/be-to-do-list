@@ -14,6 +14,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://fe-to-do-list-bm4al387z-oliveralbos-projects.vercel.app/',
+      'https://fe-to-do-list-dun.vercel.app/',
       'http://localhost:5173',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
