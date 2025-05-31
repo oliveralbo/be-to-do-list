@@ -8,36 +8,41 @@
   <a href="https://www.postgresql.org/" target="blank"><img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="60" alt="PostgreSQL Logo" /></a>
 </p>
 
-# TodoList API with NestJS, GraphQL, and PostgreSQL
+# API TodoList con NestJS, GraphQL y PostgreSQL
 
-#### by Oliverio Petrecca
+#### por Oliverio Petrecca
 
-This is a TodoList API built with NestJS, GraphQL, and PostgreSQL. It provides a complete CRUD API for managing tasks.
+Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporciona una API CRUD completa para gestionar tareas.
 
-## Features
+## Repositorios Relacionados
 
-- GraphQL API with Apollo Server
-- PostgreSQL database with TypeORM
-- UUID-based task IDs
-- Complete CRUD operations for tasks
-- Input validation
-- TypeScript support
+- [Frontend](https://github.com/oliveralbo/fe-to-do-list) - Aplicación frontend de TodoList
+- [Backend](https://github.com/oliveralbo/be-to-do-list) - API backend de TodoList (este repositorio)
 
-## Prerequisites
+## Características
 
-- Node.js (v14 or higher)
+- API GraphQL con Apollo Server
+- Base de datos PostgreSQL con TypeORM
+- IDs de tareas basados en UUID
+- Operaciones CRUD completas para tareas
+- Validación de entrada
+- Soporte para TypeScript
+
+## Requisitos Previos
+
+- Node.js (v14 o superior)
 - PostgreSQL 14.18
-- npm or yarn
+- npm o yarn
 
-## Database Setup
+## Configuración de la Base de Datos
 
-1. Make sure PostgreSQL is installed and running:
+1. Asegúrate de que PostgreSQL esté instalado y en ejecución:
 
    ```bash
    sudo systemctl status postgresql
    ```
 
-2. Create the database and user:
+2. Crea la base de datos y el usuario:
 
    ```bash
    sudo -u postgres psql -c "CREATE DATABASE todolist;"
@@ -45,7 +50,7 @@ This is a TodoList API built with NestJS, GraphQL, and PostgreSQL. It provides a
    sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE todolist TO todolist_user;"
    ```
 
-3. Create a `.env` file in the root directory with the following content:
+3. Crea un archivo `.env` en el directorio raíz con el siguiente contenido:
    ```
    DB_HOST=localhost
    DB_PORT=5432
@@ -54,234 +59,51 @@ This is a TodoList API built with NestJS, GraphQL, and PostgreSQL. It provides a
    DB_NAME=todolist
    ```
 
-## Application Setup
+## Configuración de la Aplicación
 
-1. Clone the repository
-2. Install dependencies:
+1. Clona el repositorio
+2. Instala las dependencias:
 
    ```bash
    npm install
    ```
 
-3. Start the application:
+3. Inicia la aplicación:
    ```bash
    npm run start:dev
    ```
 
-The GraphQL playground will be available at `http://localhost:3000/graphql`
+El playground de GraphQL estará disponible en `http://localhost:3000/graphql`
 
-## GraphQL API
+## Documentación de la API
 
-### Queries
+Para ver la documentación completa de las queries y mutations disponibles, visita el playground de GraphQL en `http://localhost:3000/graphql` cuando la aplicación esté en ejecución.
 
-1. Get all tasks:
+## Modelo de Tarea
 
-   ```graphql
-   query {
-     tasks {
-       id
-       title
-       description
-       completed
-       createdAt
-       updatedAt
-     }
-   }
-   ```
+La entidad Task tiene los siguientes campos:
 
-2. Get a single task:
-   ```graphql
-   query {
-     task(id: "task-uuid") {
-       id
-       title
-       description
-       completed
-       createdAt
-       updatedAt
-     }
-   }
-   ```
+- `id`: UUID (generado automáticamente)
+- `title`: String (requerido)
+- `description`: String (opcional)
+- `completed`: Boolean (por defecto false)
+- `createdAt`: DateTime (establecido automáticamente)
+- `updatedAt`: DateTime (actualizado automáticamente)
 
-### Mutations
+## Desarrollo
 
-1. Create a task:
+- La aplicación utiliza TypeORM para operaciones de base de datos
+- El esquema GraphQL se genera automáticamente
+- La validación de entrada se maneja con class-validator
+- Se utilizan UUIDs para todos los IDs de tareas
+- El esquema de la base de datos se sincroniza automáticamente en desarrollo
 
-   ```graphql
-   mutation {
-     createTask(
-       createTaskInput: { title: "New Task", description: "Task description" }
-     ) {
-       id
-       title
-       description
-       completed
-       createdAt
-       updatedAt
-     }
-   }
-   ```
+## Consideraciones para Producción
 
-2. Update a task:
+Para el despliegue en producción:
 
-   ```graphql
-   mutation {
-     updateTask(
-       updateTaskInput: {
-         id: "task-uuid"
-         title: "Updated Title"
-         completed: true
-       }
-     ) {
-       id
-       title
-       description
-       completed
-       updatedAt
-     }
-   }
-   ```
-
-3. Delete a task:
-   ```graphql
-   mutation {
-     removeTask(id: "task-uuid") {
-       id
-       title
-     }
-   }
-   ```
-
-## Task Model
-
-The Task entity has the following fields:
-
-- `id`: UUID (automatically generated)
-- `title`: String (required)
-- `description`: String (optional)
-- `completed`: Boolean (defaults to false)
-- `createdAt`: DateTime (automatically set)
-- `updatedAt`: DateTime (automatically updated)
-
-## Development
-
-- The application uses TypeORM for database operations
-- GraphQL schema is automatically generated
-- Input validation is handled by class-validator
-- UUIDs are used for all task IDs
-- The database schema is automatically synchronized in development
-
-## Production Considerations
-
-For production deployment:
-
-1. Set `synchronize: false` in the TypeORM configuration
-2. Use proper environment variables
-3. Implement proper authentication and authorization
-4. Set up proper logging
-5. Configure CORS appropriately
-
----------------------------- default NestJS ----------------------------------
-
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="60" alt="Nest Logo" /></a>
-  &nbsp;&nbsp;
-  <a href="https://graphql.org/" target="blank"><img src="https://graphql.org/img/logo.svg" width="60" alt="GraphQL Logo" /></a>
-  &nbsp;&nbsp;
-  <a href="https://nodejs.org/" target="blank"><img src="https://nodejs.org/static/images/logo.svg" width="80" alt="Node.js Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
-```bash
-$ npm install
-```
-
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+1. Establece `synchronize: false` en la configuración de TypeORM
+2. Utiliza variables de entorno apropiadas
+3. Implementa autenticación y autorización adecuadas
+4. Configura un sistema de logging apropiado
+5. Configura CORS adecuadamente

@@ -18,7 +18,7 @@ import { TasksModule } from './tasks/tasks.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      playground: true,
+      playground: true, //Graphql PlayGround DOCs.
     }),
 
     TypeOrmModule.forRoot({
