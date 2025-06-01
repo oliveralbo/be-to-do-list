@@ -1,5 +1,6 @@
 if (!globalThis.crypto) {
   Object.defineProperty(globalThis, 'crypto', {
+    //TypORM verison conflicts patch
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     value: require('crypto'),
   });

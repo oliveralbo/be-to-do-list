@@ -14,6 +14,10 @@
 
 Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporciona una API CRUD completa para gestionar tareas.
 
+## Aplicacion deplegada productiva:
+
+- [Ticmas To-Do-List](https://fe-to-do-list-dun.vercel.app/)
+
 ## Repositorios Relacionados
 
 - [Frontend](https://github.com/oliveralbo/fe-to-do-list) - Aplicación frontend de TodoList
@@ -30,7 +34,7 @@ Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporcion
 
 ## Requisitos Previos
 
-- Node.js (v14 o superior)
+- Node.js (v18 o superior)
 - PostgreSQL 14.18
 - npm o yarn
 
@@ -51,12 +55,18 @@ Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporcion
    ```
 
 3. Crea un archivo `.env` en el directorio raíz con el siguiente contenido:
+
    ```
    DB_HOST=localhost
    DB_PORT=5432
    DB_USERNAME=todolist_user
    DB_PASSWORD=todolist_password
    DB_NAME=todolist
+   ```
+
+4. Crea un archivo `.env.production` en el directorio raíz con el siguiente contenido:
+   ```
+   DATABASE_URL=postgresql://postgres:yCXvXoWtEshKyUoEgiHJiENLtASGTmfu@postgres.railway.internal:5432/railway
    ```
 
 ## Configuración de la Aplicación
@@ -73,7 +83,7 @@ Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporcion
    npm run start:dev
    ```
 
-El playground de GraphQL estará disponible en `http://localhost:3000/graphql`
+El playground de GraphQL estará disponible en `http://localhost:3000/graphql` o `http://localhost:3000/graphql` (En produccion estar seguro de de tener "/graphql" en la url de PlayGround)
 
 ## Documentación de la API
 
@@ -97,13 +107,3 @@ La entidad Task tiene los siguientes campos:
 - La validación de entrada se maneja con class-validator
 - Se utilizan UUIDs para todos los IDs de tareas
 - El esquema de la base de datos se sincroniza automáticamente en desarrollo
-
-## Consideraciones para Producción
-
-Para el despliegue en producción:
-
-1. Establece `synchronize: false` en la configuración de TypeORM
-2. Utiliza variables de entorno apropiadas
-3. Implementa autenticación y autorización adecuadas
-4. Configura un sistema de logging apropiado
-5. Configura CORS adecuadamente
