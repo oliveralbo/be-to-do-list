@@ -12,13 +12,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: [
-      'https://fe-to-do-list-bm4al387z-oliveralbos-projects.vercel.app/',
-      'https://fe-to-do-list-dun.vercel.app/',
-      'http://localhost:5173',
-    ],
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    credentials: false,
   });
 
   await app.listen(process.env.PORT ?? 3000);
