@@ -17,6 +17,7 @@ Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporcion
 ## Aplicacion deplegada productiva:
 
 - [Ticmas To-Do-List](https://fe-to-do-list-dun.vercel.app/)
+- [Backend](https://be-to-do-list-production.up.railway.app/)
 
 ## Repositorios Relacionados
 
@@ -83,7 +84,7 @@ Esta es una API TodoList construida con NestJS, GraphQL y PostgreSQL. Proporcion
    npm run start:dev
    ```
 
-El playground de GraphQL estará disponible en `http://localhost:3000/graphql` o `http://localhost:3000/graphql` (En produccion estar seguro de de tener "/graphql" en la url de PlayGround)
+El playground de GraphQL estará disponible en `http://localhost:3000/graphql` o `https://be-to-do-list-production.up.railway.app/graphql` (En produccion estar seguro de de tener "/graphql" en la url de PlayGround)
 
 ## Documentación de la API
 
@@ -107,3 +108,9 @@ La entidad Task tiene los siguientes campos:
 - La validación de entrada se maneja con class-validator
 - Se utilizan UUIDs para todos los IDs de tareas
 - El esquema de la base de datos se sincroniza automáticamente en desarrollo
+
+## Comentarios
+
+- Tanto el Frontend como el Backend están preparados para trabajo en equipo, con Husky configurado en el pre-commit para ejecutar el linter, formatear el código y correr los tests. Además, se definieron reglas y se sugieren extensiones en .vscode para facilitar el desarrollo.
+
+- El proyecto incluye una configuración inicial para pruebas e2e con supertest, provista por defecto en NestJS. Se mantiene una prueba básica para validar que el servidor responde correctamente. La estructura del backend está preparada para permitir escalar en cobertura de tests si el equipo lo considera necesario a futuro.
